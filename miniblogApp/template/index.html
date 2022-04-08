@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Miniblog</title>
+</head>
+<body>
+<h1>Home</h1>
+<h3>Add new blog entries here</h3>
+<form method="post" action="{% url 'home'%}">
+    {%csrf_token%}
+    <input name="Blog title" placeholder="Input blog title.."><br>
+    <input name="Blog header" placeholder="Input blog header.."><br>
+    <input name="Blog content" placeholder="Input blog content"><br>
+    <input type="submit" name="submit">
+</form>
+<h3>Blog posts</h3>
+{% for news in blog_news %}
+    <h4>{{blog_news.blog_title}}</h4>
+    <h4>{{blog_news.blog_header}}</h4>
+    <p>{{blog_news.blog_content}}</p>
+    <hr>
+{% endfor %}
+
+</body>
+</html>
